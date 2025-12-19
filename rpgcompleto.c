@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+#include <locale.h>
 // ========== VARIAVEIS GLOBAIS ==========
 char nomeJogador1[20];
 char nomeJogador2[20];
@@ -40,6 +40,7 @@ void limparBuffer();
 
 // ========== FUNCAO PRINCIPAL ==========
 int main() {
+	setlocale(LC_ALL, "Portuguese");
     realizarCadastro();
     return 0;
 }
@@ -293,7 +294,7 @@ int PptRussa() {
         }
         
         if (vencedor == 0) {
-            printf(" Empate! Ninguem gira a roda dessa vez.\n");
+            printf(" Empate! Ninguém gira a roda dessa vez.\n");
         } else if (vencedor == 1) {
             printf(" %s venceu a rodada!\n", j1.nome);
             printf(" %s gira a roda da sorte...\n", j1.nome);
@@ -325,9 +326,9 @@ int PptRussa() {
     if (j1.vivo && j2.vivo)
         printf("Fim das rodadas! Ambos continuam no jogo! \n");
     else if (j1.vivo)
-        printf(" %s venceu o jogo! Parabens! \n", j1.nome);
+        printf(" %s venceu o jogo! Parabéns! \n", j1.nome);
     else if (j2.vivo)
-        printf(" %s venceu o jogo! Parabens! \n", j2.nome);
+        printf(" %s venceu o jogo! Parabéns! \n", j2.nome);
     else
         printf(" Ambos saíram do jogo! Foi emocionante!\n");
     
@@ -377,7 +378,7 @@ int verdadeD() {
         "Fale uma palavra inventada e explique o significado"
     };
 
-    printf("- Perguntas ou Desafios Ficticios\n\n");
+    printf("- Perguntas ou Desafios Fictícios\n\n");
     strcpy(jogadores[0].nome, ptrNomePersonagem1);
     strcpy(jogadores[1].nome, ptrNomePersonagem2);
     jogadores[0].vidas_perdidos = 0;
@@ -398,7 +399,7 @@ int verdadeD() {
         limpar_tela();
 
         int escolha_respondedor;
-        printf("%s, escolha sua opcao:\n", jogadores[respondedor].nome);
+        printf("%s, escolha sua opção:\n", jogadores[respondedor].nome);
         printf("1 - Responder a pergunta\n");
         printf("2 - Cumprir desafio\n");
         printf("3 - Voltar ao menu principal\n");
@@ -454,7 +455,7 @@ int verdadeD() {
 
             limpar_tela();
 
-            printf("%s, voce cumpriu o desafio ficticio? (sim/nao)\nDesafio: %s\n", jogadores[respondedor].nome, desafio);
+            printf("%s, voce cumpriu o desafio fictício? (sim/não)\nDesafio: %s\n", jogadores[respondedor].nome, desafio);
             char resposta[10];
             fgets(resposta, sizeof(resposta), stdin);
             resposta[strcspn(resposta, "\n")] = 0;
@@ -500,7 +501,7 @@ int verdadeD() {
 void realizarCadastro() {
     int personagem1, personagem2;
 
-    printf("Bem vindo(a) a Academia Hyakkaou... Onde perder nao e uma opcao!");
+    printf("Bem vindo(a) á Academia Hyakkaou... Onde perder não é uma opção!");
     printf("\n_______________________________________________________________");
 
     printf("\n\nInforme o nome do Jogador 1: ");
@@ -517,7 +518,7 @@ void realizarCadastro() {
         case 3: printf(" >> Mary: Nao espere piedade. Eu vou vencer.\n"); strcpy(ptrNomePersonagem1, "Mary Saotome"); break;
         case 4: printf(" >> Itsuki: Mostre seu valor. Eu gosto de apostas altas.\n"); strcpy(ptrNomePersonagem1, "Itsuki Sumeragi"); break;
         case 5: printf(" >> Kirari: Surpreenda-me... se puder.\n"); strcpy(ptrNomePersonagem1, "Kirari Momobami"); break;
-        default: printf(" OPCAO INVALIDA! (Seguindo como desconhecido)\n"); strcpy(ptrNomePersonagem1, "Desconhecido"); break;
+        default: printf(" OPCAO INVÁLIDA! (Seguindo como desconhecido)\n"); strcpy(ptrNomePersonagem1, "Desconhecido"); break;
     }
     printf("______________________________________________________________________");
     printf("\n\nInforme o nome do Jogador 2: ");
@@ -530,7 +531,7 @@ void realizarCadastro() {
         scanf("%d", &personagem2);
 
         if (personagem2 == personagem1){
-            printf("\nOpcao invalida! O Jogador 1 ja escolheu este personagem. Escolha outro.\n");
+            printf("\nOpcao inválida! O Jogador 1 ja escolheu este personagem. Escolha outro.\n");
         }
     } while (personagem2 == personagem1);
 
@@ -549,7 +550,7 @@ void realizarCadastro() {
     printf("1 - Jogo 21\n");
     printf("2 - Pedra Papel Tesoura\n");
     printf("3 - Verdade ou Desafio\n");
-    printf("Digite o numero do jogo: ");
+    printf("Digite o número do jogo: ");
     scanf("%d", &op);
     getchar();
     
@@ -567,7 +568,7 @@ void realizarCadastro() {
            break;
            
         default:
-           printf("Opcao invalida!\n");
+           printf("Opcao inválida!\n");
            realizarCadastro();
            break;
     }
